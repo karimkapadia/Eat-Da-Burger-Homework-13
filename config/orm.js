@@ -17,14 +17,16 @@ async function selectAll()
 
 async function insertOne(bname)
 {
+  console.log(bname);
   const isDevoured = false
-  const result = await  db.query("insert into burger(burger_name, devoured) values (?,?) ${bname}, isDevoured;");
+  const result = await  db.query(`insert into burger(burger_name) values (?)`, [bname]);
   return result;
 }
 
-async function updateOne()
+async function updateOne(id)
 {
-  const result =   await db.query("Select * from burger");
+  const isDevoured = false
+  const result =   await db.query(`update burger set devoured= true where id=?`, [id]);
   return result;
 }
 
